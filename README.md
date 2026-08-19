@@ -7,7 +7,7 @@ A lightweight **Model Context Protocol (MCP)** server that gives any MCP-compati
 [![Tests](https://img.shields.io/badge/tests-27%20passing-brightgreen)](#-testing)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-> 🔗 **Live Playground:** [smithery.ai/server/@YOUR_USERNAME/devtools-mcp](#) — try the tools directly in the browser once deployed (see [Deployment](#-deployment-smithery)).
+> 🔗 **Live Playground:** [glama.ai/mcp/servers/@YOUR_USERNAME/devtools-mcp](#) — try the tools directly in the browser once listed (see [Deployment](#-deployment)).
 
 ---
 
@@ -104,7 +104,9 @@ query_database(db_path_or_url, sql_query, limit)
 ├── requirements.txt      # Runtime + dev/test dependencies
 ├── server.py             # Main MCP server — all 4 tools live here
 ├── test_server.py        # Pytest suite covering all 4 tools
-└── smithery.yaml         # Smithery deployment config
+├── Dockerfile             # Optional — only needed for Glama's hosted deployment
+├── glama.json             # Optional — repo attribution for Glama's listing
+└── smithery.yaml         # Optional — only relevant if also listing on Smithery
 ```
 
 ---
@@ -233,17 +235,21 @@ What's covered:
 
 ---
 
-## 🌐 Deployment (Smithery)
+## 🌐 Deployment
 
-This server is configured for deployment via [Smithery](https://smithery.ai) using the included `smithery.yaml`. It runs over stdio and starts with `python server.py`.
+### Option A — Glama (free directory listing + browser inspector)
 
-```bash
-smithery deploy
-```
+Submit this repo's GitHub URL at [glama.ai/mcp](https://glama.ai/mcp) — Glama indexes your tools directly from the source, no build or manifest required. Visitors get an in-browser inspector to try `fetch_markdown`, `read_log`, `search_web`, and `query_database` without installing anything locally.
 
-Once deployed, Smithery gives you a public listing page and an interactive **Playground** where anyone can call your tools directly in the browser — no local setup required. Grab that URL and drop it into the **Live Playground** link at the top of this README.
+Optional: add `glama.json` (already included) to claim/attribute the listing to your GitHub account.
 
-Adjust `smithery.yaml`'s `configSchema` if you want installers to be able to supply their own connection strings through Smithery's config UI, rather than passing them as raw tool arguments each time. See the file's inline comments for details.
+### Option B — Glama hosted deployment (Glama runs it for you, 24/7)
+
+Connect the Glama GitHub App to this repo and it builds the included `Dockerfile` into a running instance behind Glama's gateway (managed TLS, auth, logging). Check [glama.ai/mcp/hosting](https://glama.ai/mcp/hosting) for current plan details before committing to this path.
+
+### Option C — Smithery
+
+⚠️ As of early 2026, Smithery no longer accepts new **free** hosted deployments via GitHub — that now requires a paid plan. The free path on Smithery is registering this server as an **external server** (i.e. you host it yourself — e.g. via Glama's hosted option above — and just point Smithery's listing at that URL). `smithery.yaml` is still included in this repo in case you go that route; see [smithery.ai](https://smithery.ai) for current details, since their hosting model is actively changing.
 
 ---
 
