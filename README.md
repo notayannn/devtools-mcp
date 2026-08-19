@@ -7,7 +7,7 @@ A lightweight **Model Context Protocol (MCP)** server that gives any MCP-compati
 [![Tests](https://img.shields.io/badge/tests-27%20passing-brightgreen)](#-testing)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-> 🔗 **Live Playground:** [glama.ai/mcp/servers/@YOUR_USERNAME/devtools-mcp](#) — try the tools directly in the browser once listed (see [Deployment](#-deployment)).
+> 🔗 **Live Playground:** [Glama MCP Link](https://glama.ai/mcp/servers/notayannn/devtools-mcp) — try the tools directly in the browser once listed (see [Deployment](#-deployment)).
 
 ---
 
