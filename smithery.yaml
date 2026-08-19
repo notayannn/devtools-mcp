@@ -1,0 +1,33 @@
+startCommand:
+  type: stdio
+ 
+  # Defines what configuration a user must/can provide when they install
+  # this server from Smithery. These become the `config` object available
+  # to commandFunction below.
+  configSchema:
+    type: object
+    properties:
+      supabaseUrl:
+        type: string
+        title: "Supabase Project URL"
+        description: "Your Supabase project URL, e.g. https://xxxx.supabase.co"
+      supabaseKey:
+        type: string
+        title: "Supabase API Key"
+        description: "Your Supabase anon or service role key"
+    required: []
+ 
+  # Produces the CLI command Smithery uses to launch the server on stdio.
+  commandFunction: |-
+    (config) => ({
+      command: "python",
+      args: ["server.py"],
+      env: {
+        SUPABASE_URL: config.supabaseUrl || "",
+        SUPABASE_KEY: config.supabaseKey || ""
+      }
+    })
+ 
+  exampleConfig:
+    supabaseUrl: "https://xxxxxxxx.supabase.co"
+    supabaseKey: "sk-example-key"
